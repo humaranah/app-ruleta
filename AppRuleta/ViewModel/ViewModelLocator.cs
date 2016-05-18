@@ -43,6 +43,9 @@ namespace AppRuleta.ViewModel
             ////}
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<ConfiguracionViewModel>();
+            SimpleIoc.Default.Register<FormularioViewModel>();
+            SimpleIoc.Default.Register<RuletaViewModel>();
         }
 
         public MainViewModel Main
@@ -50,6 +53,30 @@ namespace AppRuleta.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
+            }
+        }
+
+        public ConfiguracionViewModel Configuracion
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ConfiguracionViewModel>();
+            }
+        }
+
+        public FormularioViewModel Formulario
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<FormularioViewModel>();
+            }
+        }
+
+        public RuletaViewModel Ruleta
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<RuletaViewModel>();
             }
         }
         

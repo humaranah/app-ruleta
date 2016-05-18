@@ -102,7 +102,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ViewModel\ConfiguracionViewModel.cs" />
+    <Compile Include="ViewModel\FormularioViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\RuletaViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Views\Configuracion.xaml.cs">
       <DependentUpon>Configuracion.xaml</DependentUpon>
