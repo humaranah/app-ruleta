@@ -24,5 +24,11 @@ namespace AppRuleta.Views
         {
             InitializeComponent();
         }
+
+        private void VolverButton_Click(object sender, RoutedEventArgs e)
+        {
+            Formulario formulario = new Formulario();
+            this.NavigationService.Navigate(formulario);
+        }
     }
 }

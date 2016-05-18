@@ -27,5 +27,14 @@ namespace AppRuleta
             Formulario formulario = new Formulario();
             Ventana.NavigationService.Navigate(formulario);
         }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.F12)
+            {
+                Configuracion configuracion = new Configuracion();
+                Ventana.NavigationService.Navigate(configuracion);
+            }
+        }
     }
 }
