@@ -9,6 +9,14 @@
       Title="Configuracion">
 
     <Grid>
-        
+        <TabControl x:Name="tabControl">
+            <TabItem Header="Formulario">
+                <Grid/>
+            </TabItem>
+            <TabItem Header="Ruleta">
+                <Grid/>
+            </TabItem>
+        </TabControl>
+
     </Grid>
 </Page>
