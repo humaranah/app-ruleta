@@ -5,7 +5,7 @@
 
     <system:Double x:Key="AppFontSize">20</system:Double>
 
-    <SolidColorBrush x:Key="PageTitleBrush" Color="#999999"/>
+    <SolidColorBrush x:Key="PageTitleBrush" Color="#777"/>
 
     <Style TargetType="TextBlock">
         <Setter Property="FontSize" Value="{DynamicResource AppFontSize}"/>
@@ -13,6 +13,10 @@
 
     <Style TargetType="TextBox">
         <Setter Property="FontSize" Value="{DynamicResource AppFontSize}"/>
+    </Style>
+
+    <Style TargetType="ListViewItem">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
     </Style>
 
     <Style TargetType="TextBlock" x:Key="PageTitle">

@@ -9,7 +9,7 @@
       Title="Configuracion"
       DataContext="{Binding Configuracion, Source={StaticResource Locator}}">
 
-    <Grid>
+    <Grid Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -18,10 +18,36 @@
         <TextBlock Style="{DynamicResource PageTitle}" Grid.Row="0">Configuración</TextBlock>
         <TabControl x:Name="tabControl" Grid.Row="1">
             <TabItem Header="Formulario">
-                <Grid/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ListView Margin="10" ItemsSource="{Binding Campos}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Text="{Binding Mode=OneWay}"/>
+                                    <Button Grid.Column="1" Command="{Binding BorrarCampo}" CommandParameter="{Binding}">Borrar</Button>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Button HorizontalAlignment="Left" Margin="10" Padding="10 5" Grid.Row="1" Command="{Binding AgregarCampo}">Agregar Campo</Button>
+                </Grid>
             </TabItem>
             <TabItem Header="Ruleta">
-                <Grid/>
+                <ListView Margin="10" ItemsSource="{Binding Premios}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Mode=OneWay}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </TabItem>
         </TabControl>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2">
