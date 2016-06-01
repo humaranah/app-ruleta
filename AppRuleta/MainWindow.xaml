@@ -6,9 +6,8 @@
         xmlns:local="clr-namespace:AppRuleta"
         mc:Ignorable="d"
         Title="App Ruleta" Height="720" Width="720"
-        WindowState="Maximized"
-        WindowStyle="None"
-        KeyDown="Window_KeyDown">
+        KeyDown="Window_KeyDown"
+        WindowState="Maximized" WindowStyle="None">
     <Frame x:Name="Ventana" NavigationUIVisibility="Hidden">
 
     </Frame>

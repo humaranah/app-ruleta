@@ -1,6 +1,7 @@
 ﻿using AppRuleta.Views;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -23,9 +24,21 @@ namespace AppRuleta
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
+        }
 
-            Formulario formulario = new Formulario();
-            Ventana.NavigationService.Navigate(formulario);
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (File.Exists("config.xml"))
+            {
+                Inicio inicio = new Inicio();
+                Ventana.NavigationService.Navigate(inicio);
+            }
+            else
+            {
+                Configuracion configuracion = new Configuracion();
+                Ventana.NavigationService.Navigate(configuracion);
+            }
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

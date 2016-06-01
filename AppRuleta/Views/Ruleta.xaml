@@ -4,11 +4,185 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppRuleta.Views"
+      xmlns:cv="clr-namespace:AppRuleta.Views.Converters"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="Ruleta">
+      d:DesignHeight="850" d:DesignWidth="720"
+      DataContext="{Binding Ruleta, Source={StaticResource Locator}}">
+    <Page.Resources>
+        <cv:StringToUriConverter x:Key="StringToUri"/>
+        <cv:PremioToAnguloConverter x:Key="PremioToAngulo"/>
+    </Page.Resources>
+    <Page.Background>
+        <ImageBrush ImageSource="{Binding Fondo, Converter={StaticResource StringToUri}}" Stretch="UniformToFill"/>
+    </Page.Background>
 
-    <Grid>
-        
-    </Grid>
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" VerticalAlignment="Center">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Viewbox Grid.Column="1" HorizontalAlignment="Center" Margin="0 20 0 5" VerticalAlignment="Bottom" Width="50">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Path Data="F1 M 0,0 L 64,0 48,27.68 32,55.36 16,27.68 z"  Fill="#ff000000" />
+                </Grid>
+            </Viewbox>
+            <Viewbox Grid.Column="1" Grid.Row="1" MaxWidth="640" MaxHeight="640" Margin="20 0">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" x:Name="ruleta">
+                    <Grid.Resources>
+                        <Storyboard x:Key="animacion" Completed="Storyboard_Completed">
+                            <DoubleAnimation x:Name="giro" Storyboard.TargetProperty="(Grid.RenderTransform).(RotateTransform.Angle)" From="0" To="{Binding Premio, Converter={StaticResource PremioToAngulo}}" Duration="0:0:6">
+                                <DoubleAnimation.EasingFunction>
+                                    <CubicEase EasingMode="EaseOut"/>
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </Grid.Resources>
+                    <Grid.RenderTransform>
+                        <RotateTransform/>
+                    </Grid.RenderTransform>
+                    <Path Data="F0 M 384.96,0.96 C 452.48,0.96 518.72,18.72 576.96,52.48 L 384.96,384.96 z"  Fill="#ffeb1313" />
+                    <Path Data="F1 M 384.96,0.96 C 452.48,0.96 518.72,18.72 576.96,52.48 L 384.96,384.96 z"  Stroke="#ff000000" StrokeThickness="2.08" StrokeLineJoin="Miter" StrokeMiterLimit="4" Clip="M 380.16,0 L 581.92,0 581.92,389.92 380.16,389.92 z"  />
+                    <Path Data="F0 M 576.96,52.48 C 635.36,86.24 683.84,134.72 717.6,192.96 L 384.96,384.96 z"  Fill="#ffffff00" />
+                    <Path Data="F1 M 576.96,52.48 C 635.36,86.24 683.84,134.72 717.6,192.96 L 384.96,384.96 z"  Stroke="#ff000000" StrokeThickness="2.08" StrokeLineJoin="Miter" StrokeMiterLimit="4" />
+                    <Path Data="F0 M 717.6,192.96 C 751.2,251.36 768.96,317.6 768.96,384.96 L 384.96,384.96 z"  Fill="#ff13eb7f" />
+                    <Path Data="F1 M 717.6,192.96 C 751.2,251.36 768.96,317.6 768.96,384.96 L 384.96,384.96 z"  Stroke="#ff000000" StrokeThickness="2.08" StrokeLineJoin="Miter" StrokeMiterLimit="4" Clip="M 380.16,188.16 L 769.92,188.16 769.92,389.92 380.16,389.92 z"  />
+                    <Path Data="F0 M 768.96,384.96 C 768.96,452.48 751.2,518.72 717.6,576.96 L 384.96,384.96 z"  Fill="#ffeb1313" />
+                    <Path Data="F1 M 768.96,384.96 C 768.96,452.48 751.2,518.72 717.6,576.96 L 384.96,384.96 z"  Stroke="#ff000000" StrokeThickness="2.08" StrokeLineJoin="Miter" StrokeMiterLimit="4" Clip="M 380.16,380.16 L 769.92,380.16 769.92,581.92 380.16,581.92 z"  />
+                    <Path Data="F0 M 717.6,576.96 C 683.84,635.36 635.36,683.84 576.96,717.6 L 384.96,384.96 z"  Fill="#ffffff00" />
+                    <Path Data="F1 M 717.6,576.96 C 683.84,635.36 635.36,683.84 576.96,717.6 L 384.96,384.96 z"  Stroke="#ff000000" StrokeThickness="2.08" StrokeLineJoin="Miter" StrokeMiterLimit="4" />
+                    <Path Data="F0 M 576.96,717.6 C 518.72,751.2 452.48,768.96 384.96,768.96 L 384.96,384.96 z"  Fill="#ff13eb7f" />
+                    <Path Data="F1 M 576.96,717.6 C 518.72,751.2 452.48,768.96 384.96,768.96 L 384.96,384.96 z"  Stroke="#ff000000" StrokeThickness="2.08" StrokeLineJoin="Miter" StrokeMiterLimit="4" Clip="M 380.16,380.16 L 581.92,380.16 581.92,769.92 380.16,769.92 z"  />
+                    <Path Data="F0 M 384.96,768.96 C 317.6,768.96 251.36,751.2 192.96,717.6 L 384.96,384.96 z"  Fill="#ffeb1313" />
+                    <Path Data="F1 M 384.96,768.96 C 317.6,768.96 251.36,751.2 192.96,717.6 L 384.96,384.96 z"  Stroke="#ff000000" StrokeThickness="2.08" StrokeLineJoin="Miter" StrokeMiterLimit="4" Clip="M 188.16,380.16 L 389.92,380.16 389.92,769.92 188.16,769.92 z"  />
+                    <Path Data="F0 M 192.96,717.6 C 134.72,683.84 86.24,635.36 52.48,576.96 L 384.96,384.96 z"  Fill="#ffffff00" />
+                    <Path Data="F1 M 192.96,717.6 C 134.72,683.84 86.24,635.36 52.48,576.96 L 384.96,384.96 z"  Stroke="#ff000000" StrokeThickness="2.08" StrokeLineJoin="Miter" StrokeMiterLimit="4" />
+                    <Path Data="F0 M 52.48,576.96 C 18.72,518.72 0.96,452.48 0.96,384.96 L 384.96,384.96 z"  Fill="#ff13eb7f" />
+                    <Path Data="F1 M 52.48,576.96 C 18.72,518.72 0.96,452.48 0.96,384.96 L 384.96,384.96 z"  Stroke="#ff000000" StrokeThickness="2.08" StrokeLineJoin="Miter" StrokeMiterLimit="4" Clip="M 0,380.16 L 389.92,380.16 389.92,581.92 0,581.92 z"  />
+                    <Path Data="F0 M 0.96,384.96 C 0.96,317.6 18.72,251.36 52.48,192.96 L 384.96,384.96 z"  Fill="#ffeb1313" />
+                    <Path Data="F1 M 0.96,384.96 C 0.96,317.6 18.72,251.36 52.48,192.96 L 384.96,384.96 z"  Stroke="#ff000000" StrokeThickness="2.08" StrokeLineJoin="Miter" StrokeMiterLimit="4" Clip="M 0,188.16 L 389.92,188.16 389.92,389.92 0,389.92 z"  />
+                    <Path Data="F0 M 52.48,192.96 C 86.24,134.72 134.72,86.24 192.96,52.48 L 384.96,384.96 z"  Fill="#ffffff00" />
+                    <Path Data="F1 M 52.48,192.96 C 86.24,134.72 134.72,86.24 192.96,52.48 L 384.96,384.96 z"  Stroke="#ff000000" StrokeThickness="2.08" StrokeLineJoin="Miter" StrokeMiterLimit="4" />
+                    <Path Data="F0 M 192.96,52.48 C 251.36,18.72 317.6,0.96 384.96,0.96 L 384.96,384.96 z"  Fill="#ff13eb7f" />
+                    <Path Data="F1 M 192.96,52.48 C 251.36,18.72 317.6,0.96 384.96,0.96 L 384.96,384.96 z"  Stroke="#ff000000" StrokeThickness="2.08" StrokeLineJoin="Miter" StrokeMiterLimit="4" Clip="M 188.16,0 L 389.92,0 389.92,389.92 188.16,389.92 z"  />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Premios[0]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="14.999999999999998"/>
+                                    <TranslateTransform X="75" Y="-120"/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Premios[1]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="45"/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Premios[2]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="75.000000000000014"/>
+                                    <TranslateTransform X="-120" Y="75"/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Premios[3]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="105"/>
+                                    <TranslateTransform X="120" Y="75"/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Premios[4]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="135"/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Premios[5]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="165"/>
+                                    <TranslateTransform X="-75" Y="-120"/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Premios[6]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="195"/>
+                                    <TranslateTransform X="-75" Y="120"/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Premios[7]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="225"/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Premios[8]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="255"/>
+                                    <TranslateTransform X="120" Y="-75"/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Premios[9]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="285"/>
+                                    <TranslateTransform X="-120" Y="-75"/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Premios[10]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="315"/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Premios[11]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="345"/>
+                                    <TranslateTransform X="75" Y="120"/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </Grid>
+                </Grid>
+            </Viewbox>
+            <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="0 10 0 20" VerticalAlignment="Top">
+                <TextBlock FontSize="24">
+                <Run>Te quedan </Run>
+                <Run Text="{Binding Intentos}"/>
+                <Run> intentos!</Run>
+                </TextBlock>
+                <Button x:Name="BotonGirar" Margin="0 10" Padding="20 5" FontSize="28" HorizontalAlignment="Center" Command="{Binding Girar}">Girar!</Button>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Page>

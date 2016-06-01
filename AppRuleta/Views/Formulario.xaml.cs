@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppRuleta.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,36 @@ namespace AppRuleta.Views
     /// </summary>
     public partial class Formulario : Page
     {
+        FormularioViewModel viewmodel;
+
         public Formulario()
         {
             InitializeComponent();
+            Loaded += Formulario_Loaded;
+        }
+
+        private void Viewmodel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            switch(e.PropertyName)
+            {
+                case "Vacio":
+                    if(viewmodel.Vacio)
+                    {
+                        MessageBox.Show("Debes llenar todos los campos para participar!");
+                    }
+                    return;
+                case "Guardado":
+                    Ruleta ruleta = new Ruleta();
+                    (Application.Current.MainWindow as MainWindow).Ventana.NavigationService.Navigate(ruleta);
+                    return;
+            }
+        }
+
+        private void Formulario_Loaded(object sender, RoutedEventArgs e)
+        {
+            viewmodel = DataContext as FormularioViewModel;
+            viewmodel.PropertyChanged += Viewmodel_PropertyChanged;
+            viewmodel.Cargar();
         }
     }
 }
