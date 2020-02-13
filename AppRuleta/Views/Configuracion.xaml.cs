@@ -39,9 +39,17 @@ namespace AppRuleta.Views
 
         private void Vm_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == "Guardado" && viewmodel.Guardado)
+            switch(e.PropertyName)
             {
-                MessageBox.Show("Configuración guardada!");
+                case "Guardado":
+                    if(viewmodel.Guardado)
+                    {
+                        MessageBox.Show("Configuración guardada!");
+                    }
+                    return;
+                case "ErrorIntentos":
+                    MessageBox.Show("El número de intentos debe ser mayor a 0!");
+                    return;
             }
         }
 

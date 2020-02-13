@@ -16,14 +16,14 @@ namespace AppRuleta.ViewModel
     {
         private Random random;
 
-        private ObservableCollection<string> premios;
+        private ObservableCollection<Premio> premios;
         private int intentos;
         private int premio;
         private string fondo;
 
         public RelayCommand Girar { get; set; }
 
-        public ObservableCollection<string> Premios
+        public ObservableCollection<Premio> Premios
         {
             get
             {
@@ -85,10 +85,10 @@ namespace AppRuleta.ViewModel
 
             if (IsInDesignMode)
             {
-                Premios = new ObservableCollection<string>();
+                Premios = new ObservableCollection<Premio>();
                 for (int i = 0; i < 12; i++)
                 {
-                    Premios.Add("Premio " + i);
+                    Premios.Add(new Premio("Premio " + i, true));
                 }
                 Intentos = 3;
             }
@@ -101,7 +101,7 @@ namespace AppRuleta.ViewModel
 
         public void Cargar()
         {
-            var collection = new ObservableCollection<string>();
+            var collection = new ObservableCollection<Premio>();
             if (File.Exists("config.xml"))
             {
                 Config config;
@@ -112,7 +112,7 @@ namespace AppRuleta.ViewModel
                 }
                 foreach (var item in config.Premios)
                 {
-                    collection.Add(item.Value);
+                    collection.Add(item);
                 }
                 Intentos = config.Intentos;
                 Fondo = config.FondoRuleta;

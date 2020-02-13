@@ -10,7 +10,7 @@ namespace AppRuleta.Models
     public class Config
     {
         public List<StringElement> Campos { get; set; }
-        public List<StringElement> Premios { get; set; }
+        public List<Premio> Premios { get; set; }
         public int Intentos { get; set; }
         public string ImagenInicio { get; set; }
         public string FondoFormulario { get; set; }

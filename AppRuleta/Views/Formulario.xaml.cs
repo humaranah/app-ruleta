@@ -51,6 +51,11 @@ namespace AppRuleta.Views
             viewmodel = DataContext as FormularioViewModel;
             viewmodel.PropertyChanged += Viewmodel_PropertyChanged;
             viewmodel.Cargar();
+            if(viewmodel.Campos.Count() == 0)
+            {
+                Ruleta ruleta = new Ruleta();
+                (Application.Current.MainWindow as MainWindow).Ventana.NavigationService.Navigate(ruleta);
+            }
         }
     }
 }

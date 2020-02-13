@@ -15,9 +15,10 @@ namespace AppRuleta.ViewModel
     public class ConfiguracionViewModel : ViewModelBase
     {
         private ObservableCollection<StringElement> campos;
-        private ObservableCollection<StringElement> premios;
+        private ObservableCollection<Premio> premios;
         private int intentos;
         private bool guardado;
+        private bool errorIntentos;
         private string imagenInicio;
         private string fondoFormulario;
         private string fondoRuleta;
@@ -43,7 +44,7 @@ namespace AppRuleta.ViewModel
             }
         }
 
-        public ObservableCollection<StringElement> Premios
+        public ObservableCollection<Premio> Premios
         {
             get
             {
@@ -133,10 +134,24 @@ namespace AppRuleta.ViewModel
             }
         }
 
+        public bool ErrorIntentos
+        {
+            get
+            {
+                return errorIntentos;
+            }
+
+            set
+            {
+                errorIntentos = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public ConfiguracionViewModel()
         {
             Campos = new ObservableCollection<StringElement>();
-            Premios = new ObservableCollection<StringElement>();
+            Premios = new ObservableCollection<Premio>();
             Intentos = new int();
 
             AgregarCampo = new RelayCommand(() =>
@@ -156,13 +171,14 @@ namespace AppRuleta.ViewModel
 
             if (IsInDesignMode)
             {
+                Random r = new Random();
                 for (int i = 0; i < 5; i++)
                 {
                     Campos.Add(new StringElement { Value = "Campo de prueba " + i });
                 }
                 for (int i = 0; i < 12; i++)
                 {
-                    Premios.Add(new StringElement("Premio " + i));
+                    Premios.Add(new Premio("Premio " + i, true));
                 }
                 Intentos = 3;
             }
@@ -174,6 +190,11 @@ namespace AppRuleta.ViewModel
 
         private void guardar()
         {
+            if(Intentos <= 0)
+            {
+                ErrorIntentos = true;
+                return;
+            }
             var config = new Config()
             {
                 Campos = campos.ToList(),
@@ -202,7 +223,7 @@ namespace AppRuleta.ViewModel
                     config = xs.Deserialize(sr) as Config;
                 }
                 Campos = new ObservableCollection<StringElement>(config.Campos);
-                Premios = new ObservableCollection<StringElement>(config.Premios);
+                Premios = new ObservableCollection<Premio>(config.Premios);
                 Intentos = config.Intentos;
                 ImagenInicio = config.ImagenInicio;
                 FondoFormulario = config.FondoFormulario;
@@ -211,10 +232,10 @@ namespace AppRuleta.ViewModel
             else
             {
                 Campos = new ObservableCollection<StringElement>();
-                Premios = new ObservableCollection<StringElement>();
+                Premios = new ObservableCollection<Premio>();
                 for (int i = 0; i < 12; i++)
                 {
-                    Premios.Add(new StringElement("Premio " + (i + 1)));
+                    Premios.Add(new Premio("Premio " + (i + 1), true));
                 }
             }
         }

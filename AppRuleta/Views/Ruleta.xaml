@@ -80,7 +80,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Premios[0]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Premios[0].Valor}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                             <TextBlock.RenderTransform>
                                 <TransformGroup>
                                     <RotateTransform Angle="14.999999999999998"/>
@@ -88,14 +88,14 @@
                                 </TransformGroup>
                             </TextBlock.RenderTransform>
                         </TextBlock>
-                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Premios[1]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Premios[1].Valor}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                             <TextBlock.RenderTransform>
                                 <TransformGroup>
                                     <RotateTransform Angle="45"/>
                                 </TransformGroup>
                             </TextBlock.RenderTransform>
                         </TextBlock>
-                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Premios[2]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Premios[2].Valor}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                             <TextBlock.RenderTransform>
                                 <TransformGroup>
                                     <RotateTransform Angle="75.000000000000014"/>
@@ -103,7 +103,7 @@
                                 </TransformGroup>
                             </TextBlock.RenderTransform>
                         </TextBlock>
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Premios[3]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Premios[3].Valor}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                             <TextBlock.RenderTransform>
                                 <TransformGroup>
                                     <RotateTransform Angle="105"/>
@@ -111,14 +111,14 @@
                                 </TransformGroup>
                             </TextBlock.RenderTransform>
                         </TextBlock>
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Premios[4]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Premios[4].Valor}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                             <TextBlock.RenderTransform>
                                 <TransformGroup>
                                     <RotateTransform Angle="135"/>
                                 </TransformGroup>
                             </TextBlock.RenderTransform>
                         </TextBlock>
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Premios[5]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Premios[5].Valor}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                             <TextBlock.RenderTransform>
                                 <TransformGroup>
                                     <RotateTransform Angle="165"/>
@@ -126,7 +126,7 @@
                                 </TransformGroup>
                             </TextBlock.RenderTransform>
                         </TextBlock>
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Premios[6]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Premios[6].Valor}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                             <TextBlock.RenderTransform>
                                 <TransformGroup>
                                     <RotateTransform Angle="195"/>
@@ -134,14 +134,14 @@
                                 </TransformGroup>
                             </TextBlock.RenderTransform>
                         </TextBlock>
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Premios[7]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Premios[7].Valor}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                             <TextBlock.RenderTransform>
                                 <TransformGroup>
                                     <RotateTransform Angle="225"/>
                                 </TransformGroup>
                             </TextBlock.RenderTransform>
                         </TextBlock>
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Premios[8]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Premios[8].Valor}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                             <TextBlock.RenderTransform>
                                 <TransformGroup>
                                     <RotateTransform Angle="255"/>
@@ -149,7 +149,7 @@
                                 </TransformGroup>
                             </TextBlock.RenderTransform>
                         </TextBlock>
-                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Premios[9]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Premios[9].Valor}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                             <TextBlock.RenderTransform>
                                 <TransformGroup>
                                     <RotateTransform Angle="285"/>
@@ -157,14 +157,14 @@
                                 </TransformGroup>
                             </TextBlock.RenderTransform>
                         </TextBlock>
-                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Premios[10]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Premios[10].Valor}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                             <TextBlock.RenderTransform>
                                 <TransformGroup>
                                     <RotateTransform Angle="315"/>
                                 </TransformGroup>
                             </TextBlock.RenderTransform>
                         </TextBlock>
-                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Premios[11]}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Premios[11].Valor}" FontSize="32" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
                             <TextBlock.RenderTransform>
                                 <TransformGroup>
                                     <RotateTransform Angle="345"/>

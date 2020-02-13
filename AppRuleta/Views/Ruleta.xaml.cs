@@ -1,4 +1,5 @@
-﻿using AppRuleta.ViewModel;
+﻿using AppRuleta.Models;
+using AppRuleta.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,7 +61,9 @@ namespace AppRuleta.Views
 
         private void Storyboard_Completed(object sender, EventArgs e)
         {
-            MessageBox.Show("Felicidades!\nHas ganado: " + viewmodel.Premios[viewmodel.Premio] + "!");
+            Premio premio = viewmodel.Premios[viewmodel.Premio];
+            string mensaje = premio.EsPremio ? ("Felicidades!\nHas ganado: " + premio.Valor + "!") : (premio.Valor);
+            MessageBox.Show(mensaje);
             viewmodel.Intentos = --intentos;
             if(intentos < 1)
             {
